@@ -1,11 +1,12 @@
 import React from 'react'
 import { PhotoCard } from '../PhotoCard'
 import { useQuery } from '@apollo/react-hooks'
-import { getPhotos } from '../../hoc/getPhotos'
+import { GET_PHOTOS } from '../../hoc/getPhotos'
 
 export const ListOfPhotoCards = categoryId => {
-  const { loading, data } = useQuery(getPhotos, { variables: categoryId })
-  if (loading) return ''
+  const { loading, error, data } = useQuery(GET_PHOTOS, { variables: categoryId })
+  if (loading) return 'Cargando...'
+  if (error) return `${error}`
   return (
     <ul>
       {
