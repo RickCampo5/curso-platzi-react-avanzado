@@ -5,7 +5,7 @@ import { GET_FAVS } from '../../hoc/getFavs'
 
 export const ListOfFavPhotoCards = () => {
   const { loading, error, data } = useQuery(GET_FAVS, {
-    fetchPolicy: 'network-only'
+    fetchPolicy: 'cache-and-network'
   })
   if (loading) return 'Cargando...'
   if (error) return `${error}`
